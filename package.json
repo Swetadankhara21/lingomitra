@@ -1,0 +1,26 @@
+{
+  "name": "lingomitra",
+  "private": true,
+  "version": "2.0.0",
+  "description": "LingoMitra - free English learning games: word game, quiz game, grammar game, spelling game, typing game, songs, stories and a 50,000-word dictionary.",
+  "author": "Shweta Golakiya",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "dictionary": "curl -s https://kaikki.org/dictionary/English/kaikki.org-dictionary-English.jsonl | node scripts/build-dictionary.mjs scripts/tmp/en_50k.txt"
+  },
+  "dependencies": {
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-router-dom": "6.26.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "4.3.2",
+    "autoprefixer": "10.4.20",
+    "postcss": "8.4.47",
+    "tailwindcss": "3.4.13",
+    "vite": "5.4.8"
+  }
+}

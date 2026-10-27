@@ -1,0 +1,118 @@
+// Original short stories written for LingoMitra.
+// { id, title, emoji, level, text[], gu (Gujarati summary), words: [English, Gujarati], quiz: [q, options (correct first)] }
+export const stories = [
+  {
+    id: 'thirsty-crow-garden',
+    title: 'Mira and the Little Garden',
+    emoji: '🌱',
+    level: 'beginner',
+    text: [
+      'Mira lives in a small house in Rajkot. Behind her house there is an empty piece of land.',
+      'One day she plants five seeds. Every morning she gives them water before school.',
+      'After two weeks, small green leaves come out. Mira is very happy.',
+      'Soon there are tomatoes, chillies and flowers. Mira shares the vegetables with her neighbours.',
+    ],
+    gu: 'મીરા પોતાના ઘર પાછળ બીજ વાવે છે, રોજ પાણી આપે છે અને પછી શાકભાજી પડોશીઓ સાથે વહેંચે છે.',
+    words: [['empty', 'ખાલી'], ['plant', 'વાવવું'], ['leaves', 'પાંદડાં'], ['share', 'વહેંચવું']],
+    quiz: [
+      ['Where does Mira live?', ['In Rajkot', 'In Mumbai', 'In Surat']],
+      ['When does she water the seeds?', ['Every morning before school', 'Every night', 'Only on Sunday']],
+      ['What does she do with the vegetables?', ['She shares them with neighbours', 'She sells them', 'She throws them away']],
+    ],
+  },
+  {
+    id: 'lost-phone',
+    title: 'The Lost Phone',
+    emoji: '📱',
+    level: 'beginner',
+    text: [
+      'Arjun was on a bus to college. When he got down, he saw a phone on the seat.',
+      'He did not keep it. He waited at the bus stop and the phone rang.',
+      '"Hello, this is my phone," said an old man. "I am at the next stop."',
+      'Arjun walked to the next stop and gave the phone back. The old man smiled and said, "Thank you, honest boy!"',
+    ],
+    gu: 'અર્જુનને બસમાં ફોન મળે છે અને તે પ્રામાણિકપણે તેના માલિક વૃદ્ધ વ્યક્તિને પાછો આપે છે.',
+    words: [['seat', 'બેઠક'], ['wait', 'રાહ જોવી'], ['give back', 'પાછું આપવું'], ['honest', 'પ્રામાણિક']],
+    quiz: [
+      ['Where did Arjun find the phone?', ['On the bus seat', 'In the college', 'On the road']],
+      ['Who was the owner of the phone?', ['An old man', 'A teacher', 'A child']],
+      ['What kind of boy is Arjun?', ['Honest', 'Lazy', 'Rude']],
+    ],
+  },
+  {
+    id: 'kite-festival',
+    title: 'Uttarayan on the Terrace',
+    emoji: '🪁',
+    level: 'intermediate',
+    text: [
+      'Every January, the sky above Ahmedabad fills with colourful kites. Riya and her cousins spend the whole day on the terrace.',
+      'This year Riya wanted to fly the highest kite. She practised for a week and learned how to hold the string properly.',
+      'On the festival day the wind was strong. Her kite went up and up until it looked like a small dot.',
+      'Suddenly another kite cut her string. Instead of getting angry, Riya laughed and said, "Next year I will be even better."',
+    ],
+    gu: 'ઉત્તરાયણમાં રિયા ઊંચો પતંગ ચગાવે છે; પતંગ કપાય છતાં તે ગુસ્સે થયા વિના આવતા વર્ષે વધુ સારું કરવાનું નક્કી કરે છે.',
+    words: [['terrace', 'અગાશી'], ['practise', 'મહાવરો કરવો'], ['string', 'દોરી'], ['instead of', 'ને બદલે']],
+    quiz: [
+      ['In which month is the kite festival?', ['January', 'March', 'October']],
+      ['What did Riya practise?', ['Holding the string properly', 'Making kites', 'Singing songs']],
+      ['How did Riya react when her kite was cut?', ['She laughed and stayed positive', 'She cried', 'She stopped playing forever']],
+    ],
+  },
+  {
+    id: 'first-interview',
+    title: 'Karan’s First Interview',
+    emoji: '💼',
+    level: 'intermediate',
+    text: [
+      'Karan had his first job interview at a software company in Vadodara. He was nervous because he thought his English was not good enough.',
+      'For two weeks he practised answering common questions in front of a mirror. He also played English games every day to learn new words.',
+      'In the interview, the manager asked, "Why should we hire you?" Karan answered slowly and clearly about his projects and his eagerness to learn.',
+      'A week later he received an email: he had got the job. He realised that confidence comes from preparation.',
+    ],
+    gu: 'કરણ ઇન્ટરવ્યૂ માટે અંગ્રેજીમાં મહાવરો કરે છે, સ્પષ્ટ જવાબ આપે છે અને નોકરી મેળવે છે – તૈયારીથી આત્મવિશ્વાસ આવે છે.',
+    words: [['nervous', 'ગભરાયેલું'], ['hire', 'નોકરી પર રાખવું'], ['eagerness', 'આતુરતા'], ['realise', 'સમજાવું']],
+    quiz: [
+      ['Why was Karan nervous?', ['He thought his English was weak', 'He was late', 'He was ill']],
+      ['How did he prepare?', ['He practised answers and learned new words', 'He slept a lot', 'He did nothing']],
+      ['What did Karan learn?', ['Confidence comes from preparation', 'Interviews are easy', 'English is not useful']],
+    ],
+  },
+  {
+    id: 'water-saving-village',
+    title: 'The Village That Saved Water',
+    emoji: '💧',
+    level: 'advanced',
+    text: [
+      'A few years ago, a small village in Saurashtra faced a severe water shortage. The wells had dried up and women walked kilometres every day to fetch water.',
+      'A young engineer named Nisha returned to her village and suggested building small check dams to store rainwater.',
+      'At first, many villagers were reluctant because they doubted the idea would work. Nisha patiently explained the plan and offered to work alongside them.',
+      'After the next monsoon the wells were full again. The village had not only solved its problem but also become an example for the whole district.',
+    ],
+    gu: 'પાણીની તંગી ધરાવતા ગામમાં નિશા ચેકડેમ બાંધવાનું સૂચન કરે છે; બધાએ સાથે કામ કર્યું અને ગામ આખા જિલ્લા માટે ઉદાહરણ બન્યું.',
+    words: [['severe', 'ગંભીર'], ['shortage', 'તંગી'], ['reluctant', 'અનિચ્છુક'], ['alongside', 'સાથે મળીને']],
+    quiz: [
+      ['What problem did the village face?', ['A water shortage', 'No electricity', 'Too many visitors']],
+      ['What did Nisha suggest?', ['Building check dams', 'Leaving the village', 'Buying bottled water']],
+      ['Why were villagers reluctant at first?', ['They doubted the idea would work', 'They had no time', 'They disliked Nisha']],
+    ],
+  },
+  {
+    id: 'grandfathers-letters',
+    title: 'Grandfather’s Letters',
+    emoji: '✉️',
+    level: 'advanced',
+    text: [
+      'While cleaning the attic, Dev discovered a box of old letters written by his grandfather to his grandmother in the 1970s.',
+      'Each letter described ordinary days – the price of vegetables, a new bicycle, the first rain of the season – yet they felt extraordinary.',
+      'Dev realised that his grandfather had taught himself English by writing a letter every week, looking up unfamiliar words in a pocket dictionary.',
+      'Inspired, Dev decided to keep a journal in English. "If he could learn without the internet," he thought, "I have no excuse."',
+    ],
+    gu: 'દેવને દાદાના જૂના અંગ્રેજી પત્રો મળે છે; દાદાએ દર અઠવાડિયે પત્ર લખીને અંગ્રેજી શીખ્યું હતું, તેથી દેવ પણ અંગ્રેજીમાં ડાયરી લખવાનું નક્કી કરે છે.',
+    words: [['attic', 'માળિયું'], ['extraordinary', 'અસાધારણ'], ['unfamiliar', 'અજાણ્યું'], ['excuse', 'બહાનું']],
+    quiz: [
+      ['What did Dev find in the attic?', ['Old letters from his grandfather', 'A bicycle', 'A new phone']],
+      ['How did his grandfather learn English?', ['By writing letters every week', 'By watching films', 'At a big university']],
+      ['What did Dev decide to do?', ['Keep a journal in English', 'Sell the letters', 'Stop studying']],
+    ],
+  },
+];

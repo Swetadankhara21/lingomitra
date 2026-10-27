@@ -1,4 +1,5 @@
-import { BookOpen, Flame, History, Keyboard, Star, Target, Trophy } from 'lucide-react';
+import { BookOpen, Flame, History, Keyboard, Lock, Medal, Star, Target, Trophy } from 'lucide-react';
+import { badgesFor } from '../lib/badges.js';
 import { Link } from 'react-router-dom';
 import { useI18n } from '../i18n/index.jsx';
 import { useProgress } from '../lib/progress.jsx';
@@ -19,6 +20,7 @@ export default function Dashboard() {
   const totals = tracked.reduce((a, { s }) => (s ? { correct: a.correct + s.correct, total: a.total + s.total } : a), { correct: 0, total: 0 });
   const playedCount = tracked.filter(({ s }) => s).length;
 
+  const badges = badgesFor(p);
   const cards = [
     [Star, p.points, t('points')],
     [Flame, p.streak, t('streak')],
@@ -47,6 +49,36 @@ export default function Dashboard() {
             </div>
           ))}
         </div>
+
+        <section className="card mt-8 p-6">
+          <div className="flex items-center justify-between gap-3">
+            <h2 className="flex items-center gap-2 text-xl font-extrabold text-ink">
+              <Medal className="h-5 w-5 text-teal" aria-hidden="true" /> {t('badges')}
+            </h2>
+            <span className="chip">
+              {badges.filter((b) => b.done).length} / {badges.length}
+            </span>
+          </div>
+          <ul className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+            {badges.map(({ key, icon: Icon, done, value, goal }) => (
+              <li key={key} className={`rounded-2xl p-4 text-center transition ${done ? 'bg-gradient-to-br from-mint-light to-white ring-2 ring-mint' : 'bg-bg ring-1 ring-mint-light'}`}>
+                <span
+                  className={`icon-3d mx-auto h-14 w-14 rounded-full ${done ? 'bg-gradient-to-br from-amber-300 to-amber-500' : '!shadow-none bg-slate-200 text-slate-400'}`}
+                  aria-hidden="true"
+                >
+                  {done ? <Icon className="relative h-7 w-7" /> : <Lock className="relative h-6 w-6" />}
+                </span>
+                <p className={`mt-3 font-extrabold ${done ? 'text-ink' : 'text-ink-soft'}`}>{t(`badge_${key}`)}</p>
+                <p className="text-xs text-ink-soft">{t(`badgeDesc_${key}`)}</p>
+                {!done && (
+                  <div className="mt-2">
+                    <ProgressBar value={value} max={goal} label={t(`badge_${key}`)} />
+                  </div>
+                )}
+              </li>
+            ))}
+          </ul>
+        </section>
 
         <section className="card mt-8 p-6">
           <div className="flex items-center justify-between gap-3">

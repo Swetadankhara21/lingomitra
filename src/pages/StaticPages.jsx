@@ -100,6 +100,12 @@ export function Privacy() {
           </p>
           <h2>Listening features</h2>
           <p>“Listen” buttons use your browser’s built-in text-to-speech. Depending on your device, the browser or operating system may process this text.</p>
+          <h2>Microphone (Speak &amp; Score)</h2>
+          <p>
+            The Speak &amp; Score game uses your browser’s built-in speech recognition, and only after you tap the microphone button and allow access. In Chrome and
+            Edge, the browser sends that short recording to its own speech service (Google or Microsoft) to turn it into text. LingoMitra never receives or stores
+            your voice – only the recognised text is compared on your device to give a score.
+          </p>
           <h2>Hosting and fonts</h2>
           <p>
             The website is hosted on Vercel, which keeps standard server logs (such as IP address and browser type) for security and performance. Fonts are

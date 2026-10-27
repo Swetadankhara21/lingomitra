@@ -6,7 +6,7 @@ import { GameCard, PageHeader } from '../components/ui.jsx';
 
 export default function Games() {
   const { t } = useI18n();
-  useSeo('All English Games', 'Play 12 free English learning games: word game, Gujarati to English quiz, grammar game, spelling game, sentence builder, listening game, typing speed test and daily challenge.');
+  useSeo('All English Games', 'Play 17 free English learning games: word game, word match memory game, word guess (hangman), word rush, missing letter, speak & score pronunciation, Gujarati to English quiz, grammar, spelling, sentence builder, listening, typing speed test and daily challenge.');
   return (
     <>
       <PageHeader icon={Gamepad2} title={t('allGames')} desc={t('allGamesSub')} />

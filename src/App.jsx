@@ -28,6 +28,11 @@ const Privacy = page(() => import('./pages/Privacy.jsx'));
 const Terms = page(() => import('./pages/Terms.jsx'));
 const Credits = page(() => import('./pages/Credits.jsx'));
 const NotFound = page(() => import('./pages/NotFound.jsx'));
+const WordMatch = page(() => import('./pages/WordMatch.jsx'));
+const WordGuess = page(() => import('./pages/WordGuess.jsx'));
+const WordRush = page(() => import('./pages/WordRush.jsx'));
+const MissingLetter = page(() => import('./pages/MissingLetter.jsx'));
+const SpeakScore = page(() => import('./pages/SpeakScore.jsx'));
 
 export default function App() {
   return (
@@ -46,6 +51,11 @@ export default function App() {
           <Route path="listening-game" element={<Listening />} />
           <Route path="typing-speed-test" element={<Typing />} />
           <Route path="daily-challenge" element={<DailyChallenge />} />
+          <Route path="word-match-game" element={<WordMatch />} />
+          <Route path="word-guess-game" element={<WordGuess />} />
+          <Route path="word-rush-game" element={<WordRush />} />
+          <Route path="missing-letter-game" element={<MissingLetter />} />
+          <Route path="speak-and-score" element={<SpeakScore />} />
           <Route path="progress" element={<Dashboard />} />
           <Route path="english-tips" element={<Tips />} />
           <Route path="dictionary" element={<Dictionary />} />

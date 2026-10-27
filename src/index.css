@@ -196,6 +196,27 @@
   .cube-top { transform: rotateX(90deg) translateZ(calc(var(--size) / 2)); }
   .cube-bottom { transform: rotateX(-90deg) translateZ(calc(var(--size) / 2)); }
 
+  /* 3D flip cards (Word Match) */
+  .flip {
+    @apply block w-full;
+    perspective: 900px;
+  }
+  .flip-inner {
+    @apply relative block h-full w-full transition-transform duration-500;
+    transform-style: preserve-3d;
+  }
+  .flip.is-open .flip-inner {
+    transform: rotateY(180deg);
+  }
+  .flip-face {
+    @apply absolute inset-0 flex items-center justify-center rounded-2xl p-2 text-center font-extrabold;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+  .flip-back {
+    transform: rotateY(180deg);
+  }
+
   /* Perspective grid floor for dark banners */
   .grid-floor {
     @apply pointer-events-none absolute inset-x-0 bottom-0 h-2/3;

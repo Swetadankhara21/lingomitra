@@ -34,7 +34,7 @@ export default function WordRush() {
   const [flash, setFlash] = useState(null);
   const score = useRef({ right: 0, answered: 0 });
 
-  useSeo('Word Rush – 60 Second English Game', 'Fast English vocabulary game: decide in 60 seconds whether each English word has the right Gujarati, Hindi, German or Polish meaning.');
+  useSeo();
 
   useEffect(() => setState('ready'), [meaningLang, level]);
 

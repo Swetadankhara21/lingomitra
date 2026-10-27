@@ -17,7 +17,7 @@ export default function DailyWord() {
   // Same word for everyone all day; walks through the list day by day.
   const w = vocabulary[(dayNumber() * 37) % vocabulary.length];
 
-  useSeo('English Word of the Day', 'English word of the day with Gujarati, Hindi, German and Polish meaning, pronunciation and an example sentence.');
+  useSeo();
 
   useEffect(() => {
     lookup(w.word).then(setEntry);

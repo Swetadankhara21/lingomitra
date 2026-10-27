@@ -6,7 +6,7 @@ import { GameCard, PageHeader } from '../components/ui.jsx';
 
 export default function Learn() {
   const { t } = useI18n();
-  useSeo('Learn English A to Z', 'Learn English from A to Z: alphabet with sounds, learning songs, short stories, daily phrases, common mistakes and a 50,000-word dictionary.');
+  useSeo();
   const items = [...LEARN, gameByKey('dictionary'), gameByKey('tips'), gameByKey('dailyWord')];
   return (
     <>

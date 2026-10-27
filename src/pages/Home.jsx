@@ -14,10 +14,7 @@ export default function Home() {
   const { points, streak } = useProgress();
   const [words, setWords] = useState(null);
 
-  useSeo(
-    '',
-    'LingoMitra: free English learning games – word game, Gujarati to English quiz game, grammar game, spelling game, listening game, typing speed game, daily challenge, songs, stories and a 50,000-word dictionary with Gujarati, Hindi, German and Polish meanings.',
-  );
+  useSeo();
 
   useEffect(() => {
     loadIndex()

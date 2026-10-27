@@ -15,3 +15,5 @@ Disallow: /
 
 User-agent: *
 Allow: /
+
+Sitemap: https://lingomitra.vercel.app/sitemap.xml

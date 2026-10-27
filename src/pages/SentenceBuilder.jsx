@@ -19,7 +19,7 @@ export default function SentenceBuilder() {
   const [correct, setCorrect] = useState(0);
   const [done, setDone] = useState(false);
 
-  useSeo('Sentence Builder Game', 'English sentence builder game: arrange shuffled words to make correct English sentences, with Gujarati meanings for every sentence.');
+  useSeo();
 
   const set = useMemo(() => shuffle(byLevel(sentences, level, ROUND)).slice(0, ROUND), [level, round]);
   const s = set[i];

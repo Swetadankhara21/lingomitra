@@ -16,7 +16,7 @@ export default function Typing() {
   const [result, setResult] = useState(null);
   const inputRef = useRef(null);
 
-  useSeo('English Typing Speed Test', 'Free English typing speed test game: type short English passages and see your words per minute (WPM) and accuracy.');
+  useSeo();
 
   const text = useMemo(() => shuffle(typingPassages.filter((p) => p.level === level))[0].text, [level, round]);
 

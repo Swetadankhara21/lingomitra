@@ -15,7 +15,7 @@ export default function Listening() {
   const { level } = useProgress();
   const [round, setRound] = useState(0);
 
-  useSeo('English Listening Game', 'English listening practice game: listen to English words and sentences spoken aloud and choose what you heard.');
+  useSeo();
 
   const questions = useMemo(() => {
     const words = vocabulary.filter((w) => w.level === level).map((w) => w.word);

@@ -27,7 +27,7 @@ export default function DailyChallenge() {
   const questions = useMemo(() => todaysQuestions(day), [day]);
   const done = dailyDone[day];
 
-  useSeo('Daily English Challenge Game', 'Daily English challenge game: 10 new grammar, translation and spelling questions every day. Earn bonus points and keep your streak.');
+  useSeo();
 
   const finish = (correct, total) => {
     completeDaily(correct, total);

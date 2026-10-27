@@ -10,7 +10,7 @@ export default function Alphabet() {
   const [active, setActive] = useState(0);
   const [letter, sound, words] = alphabet[active];
 
-  useSeo('English Alphabet A to Z', 'Learn the English alphabet A to Z with letter sounds, example words, pictures and Gujarati meanings – tap to hear each letter.');
+  useSeo();
 
   const pick = (i) => {
     setActive(i);

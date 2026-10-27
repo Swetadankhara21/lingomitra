@@ -41,7 +41,7 @@ export default function SpeakScore() {
   const [done, setDone] = useState(false);
   const rec = useRef(null);
 
-  useSeo('Speak & Score – English Pronunciation Game', 'Free English pronunciation practice game: say English words and sentences into your microphone and get an instant pronunciation score.');
+  useSeo();
 
   // 5 words + 3 short sentences of the level.
   const items = useMemo(() => {

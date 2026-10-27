@@ -15,7 +15,7 @@ export default function Grammar() {
   const [topic, setTopic] = useState('All');
   const [round, setRound] = useState(0);
 
-  useSeo('English Grammar Game', 'Free English grammar game: practise tenses, articles (a, an, the), prepositions, subject-verb agreement and sentence formation with explanations.');
+  useSeo();
 
   const questions = useMemo(() => {
     const pool = topic === 'All' ? byLevel(grammar, level, 10) : grammar.filter((q) => q.topic === topic);

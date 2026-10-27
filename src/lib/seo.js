@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
-
-export const SITE = 'LingoMitra';
-export const SITE_TAG = 'Free English Learning Games';
+import { useLocation } from 'react-router-dom';
+import { SEO_PAGES, SITE_URL } from './seoPages.js';
 
 function setMeta(attr, key, content) {
   let el = document.head.querySelector(`meta[${attr}="${key}"]`);
@@ -23,17 +22,25 @@ function setCanonical(href) {
   el.setAttribute('href', href);
 }
 
-/** Per-page title, description, social tags and canonical URL. */
-export function useSeo(title, description) {
+/**
+ * Title, description, social tags and canonical URL for the current page.
+ * Text comes from seoPages.js by path; pass { title, description } for pages
+ * that build their own (dictionary letters, 404).
+ */
+export function useSeo(override) {
+  const { pathname } = useLocation();
+  const page = override || SEO_PAGES[pathname] || SEO_PAGES['/'];
+  const { title, description } = page;
+
   useEffect(() => {
-    const full = title ? `${title} – ${SITE} | ${SITE_TAG}` : `${SITE} – ${SITE_TAG} in Gujarati, Hindi & more`;
-    document.title = full;
+    const url = SITE_URL + (pathname === '/' ? '/' : pathname.replace(/\/$/, ''));
+    document.title = title;
     setMeta('name', 'description', description);
-    setMeta('property', 'og:title', full);
+    setMeta('property', 'og:title', title);
     setMeta('property', 'og:description', description);
-    setMeta('property', 'og:url', window.location.href);
-    setMeta('name', 'twitter:title', full);
+    setMeta('property', 'og:url', url);
+    setMeta('name', 'twitter:title', title);
     setMeta('name', 'twitter:description', description);
-    setCanonical(window.location.origin + window.location.pathname);
-  }, [title, description]);
+    setCanonical(url);
+  }, [title, description, pathname]);
 }

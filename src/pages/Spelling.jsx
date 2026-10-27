@@ -12,7 +12,7 @@ export default function Spelling() {
   const { level } = useProgress();
   const [round, setRound] = useState(0);
 
-  useSeo('English Spelling Game', 'English spelling game: choose the correct spelling of commonly misspelt English words like necessary, receive, February and business.');
+  useSeo();
 
   const questions = useMemo(
     () =>

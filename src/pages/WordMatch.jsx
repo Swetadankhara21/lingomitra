@@ -21,7 +21,7 @@ export default function WordMatch() {
   const [moves, setMoves] = useState(0);
   const [done, setDone] = useState(null);
 
-  useSeo('Word Match Memory Game', 'English word match memory game: flip 3D cards and pair English words with their Gujarati, Hindi, German or Polish meanings.');
+  useSeo();
 
   // 6 words → 12 cards (word + meaning), shuffled.
   const cards = useMemo(() => {

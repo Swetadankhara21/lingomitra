@@ -7,7 +7,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node scripts/seo-pages.mjs",
     "preview": "vite preview",
     "dictionary": "node --max-old-space-size=8192 scripts/build-dictionary.mjs"
   },

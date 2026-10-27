@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useI18n } from '../i18n/index.jsx';
 import { useSeo } from '../lib/seo.js';
+import { dictionaryLetterSeo } from '../lib/seoPages.js';
 import { loadIndex, loadLetter, MEANING_LANGS } from '../lib/dictionary.js';
 import { Loading, PageHeader, SpeakButton } from '../components/ui.jsx';
 import MeaningLangPicker from '../components/MeaningLangPicker.jsx';
@@ -22,10 +23,7 @@ export default function Dictionary() {
   const [shown, setShown] = useState(PAGE);
   const [onlyWithMeaning, setOnlyWithMeaning] = useState(true);
 
-  useSeo(
-    `English Dictionary – Words starting with ${letter.toUpperCase()}`,
-    `English dictionary A to Z: English words starting with ${letter.toUpperCase()} with meanings in Gujarati, Hindi, German and Polish, pronunciation (IPA) and definitions.`,
-  );
+  useSeo(param ? dictionaryLetterSeo(letter) : undefined);
 
   useEffect(() => {
     loadIndex().then(setIndex).catch(() => setError(true));

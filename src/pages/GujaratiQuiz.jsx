@@ -12,7 +12,7 @@ export default function GujaratiQuiz() {
   const { level } = useProgress();
   const [round, setRound] = useState(0);
 
-  useSeo('Gujarati to English Quiz Game', 'Gujarati to English translation quiz game: pick the correct English sentence for everyday Gujarati sentences, with instant answers and simple explanations.');
+  useSeo();
 
   const questions = useMemo(
     () =>

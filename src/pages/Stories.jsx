@@ -73,7 +73,7 @@ export default function Stories() {
   const [openId, setOpenId] = useState(null);
   const open = stories.find((s) => s.id === openId);
 
-  useSeo('Short English Stories with Gujarati Meaning', 'Short English stories for beginners and intermediate learners with Gujarati summaries, word meanings, read-aloud and a quick quiz.');
+  useSeo();
 
   return (
     <>

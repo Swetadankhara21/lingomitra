@@ -12,7 +12,7 @@ export default function Tips() {
   const today = phrases[dayNumber() % phrases.length];
   const meaning = (p) => (lang === 'hi' ? p[2] : p[1]);
 
-  useSeo('English Tips: Daily Phrases & Common Mistakes', 'Useful daily English phrases with Gujarati and Hindi meanings, and the most common English mistakes Indian learners make – with corrections.');
+  useSeo();
 
   return (
     <>

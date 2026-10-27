@@ -46,7 +46,7 @@ export default function Songs() {
   const [open, setOpen] = useState(songs[0].id);
   const { line, play, stop } = useSingAlong();
 
-  useSeo('English Learning Songs & Rhymes', 'Original English learning songs and rhymes for kids and beginners – alphabet, days of the week, months, colours, numbers and tenses – with Gujarati meanings and read-along.');
+  useSeo();
 
   return (
     <>

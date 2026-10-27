@@ -23,7 +23,7 @@ export default function MissingLetter() {
   const pool = useWordPool(meaningLang, level);
   const [round, setRound] = useState(0);
 
-  useSeo('Missing Letter Spelling Game', 'English missing letter game: find the letter missing from each English word, with Gujarati, Hindi, German or Polish meanings as hints.');
+  useSeo();
 
   const questions = useMemo(() => {
     if (!pool) return [];

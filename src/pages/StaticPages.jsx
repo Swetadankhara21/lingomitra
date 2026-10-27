@@ -2,6 +2,7 @@ import { Compass, Handshake, Heart, Linkedin, Mail, ScrollText, ShieldCheck } fr
 import { Link } from 'react-router-dom';
 import { useI18n } from '../i18n/index.jsx';
 import { useSeo } from '../lib/seo.js';
+import { NOT_FOUND_SEO } from '../lib/seoPages.js';
 import { OWNER } from '../lib/owner.js';
 import { PageHeader } from '../components/ui.jsx';
 
@@ -19,7 +20,7 @@ const LinkedIn = () => (
 
 export function About() {
   const { t } = useI18n();
-  useSeo('About LingoMitra', `About LingoMitra, free English learning games for Gujarati and Indian learners, created by ${OWNER.name}.`);
+  useSeo();
   return (
     <>
       <PageHeader icon={Handshake} title={t('nav_about')} desc={t('footerTag')} />
@@ -55,7 +56,7 @@ export function About() {
 
 export function Contact() {
   const { t } = useI18n();
-  useSeo('Contact', 'Contact the LingoMitra team with feedback, suggestions or corrections.');
+  useSeo();
   return (
     <>
       <PageHeader icon={Mail} title={t('nav_contact')} desc="Feedback, ideas and corrections are always welcome." />
@@ -84,7 +85,7 @@ export function Contact() {
 
 export function Privacy() {
   const { t } = useI18n();
-  useSeo('Privacy Policy', 'LingoMitra privacy policy: no account, no personal data collected; progress is stored only in your browser.');
+  useSeo();
   return (
     <>
       <PageHeader icon={ShieldCheck} title={t('nav_privacy')} desc={`Last updated: ${UPDATED}`} />
@@ -137,7 +138,7 @@ export function Privacy() {
 
 export function Terms() {
   const { t } = useI18n();
-  useSeo('Terms of Use', 'Terms of use for LingoMitra free English learning games.');
+  useSeo();
   return (
     <>
       <PageHeader icon={ScrollText} title={t('nav_terms')} desc={`Last updated: ${UPDATED}`} />
@@ -170,7 +171,7 @@ export function Terms() {
 
 export function Credits() {
   const { t } = useI18n();
-  useSeo('Credits & Licences', 'Credits and licences for the data used on LingoMitra, including Wiktionary dictionary data.');
+  useSeo();
   return (
     <>
       <PageHeader icon={Heart} title={t('nav_credits')} desc="Open data that makes LingoMitra possible." />
@@ -204,7 +205,7 @@ export function Credits() {
 
 export function NotFound() {
   const { t } = useI18n();
-  useSeo('Page not found', 'This page does not exist. Play free English learning games on LingoMitra.');
+  useSeo(NOT_FOUND_SEO);
   return (
     <div className="container-page py-24 text-center">
       <Compass className="mx-auto h-20 w-20 text-teal" aria-hidden="true" />

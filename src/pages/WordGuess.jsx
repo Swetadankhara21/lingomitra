@@ -23,7 +23,7 @@ export default function WordGuess() {
   const [score, setScore] = useState(0);
   const [done, setDone] = useState(false);
 
-  useSeo('Word Guess Game (Hangman)', 'English word guess game: guess the English word letter by letter from its Gujarati, Hindi, German or Polish meaning, with 6 lives.');
+  useSeo();
 
   const words = useMemo(() => (pool ? shuffle(pool.filter((w) => /^[a-z]{3,10}$/.test(w.word))).slice(0, ROUND) : []), [pool, round]);
 

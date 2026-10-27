@@ -14,7 +14,7 @@ export default function Dashboard() {
   const { t } = useI18n();
   const p = useProgress();
 
-  useSeo('My English Progress', 'Your English learning progress: points, daily streak, accuracy, words learned and scores for every game – saved privately on your device.');
+  useSeo();
 
   const tracked = PLAYABLE.map((g) => ({ g, s: p.games[g.key] }));
   const totals = tracked.reduce((a, { s }) => (s ? { correct: a.correct + s.correct, total: a.total + s.total } : a), { correct: 0, total: 0 });

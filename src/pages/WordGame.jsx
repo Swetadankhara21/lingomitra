@@ -80,7 +80,7 @@ export default function WordGame() {
   const [mode, setMode] = useState('learn');
   const [round, setRound] = useState(0);
 
-  useSeo('English Word Game', 'Free English word game: learn English vocabulary with Gujarati, Hindi, German and Polish meanings, pronunciation and examples, then test yourself in a quiz.');
+  useSeo();
 
   useEffect(() => {
     setPool(null);

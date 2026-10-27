@@ -58,7 +58,7 @@ export default function Typing() {
 
   return (
     <>
-      <PageHeader emoji="⌨️" title={t('game_typing')} desc={t('desc_typing')}>
+      <PageHeader gameKey="typing" title={t('game_typing')} desc={t('desc_typing')}>
         <LevelPicker />
       </PageHeader>
       <div className="container-page mt-8">

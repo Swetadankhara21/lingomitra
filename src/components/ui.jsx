@@ -1,4 +1,6 @@
+import { CheckCircle2, Dumbbell, PartyPopper, Volume2, XCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { gameByKey } from '../lib/games.js';
 import { useI18n } from '../i18n/index.jsx';
 import { useProgress } from '../lib/progress.jsx';
 import { canSpeak, speak } from '../lib/speech.js';
@@ -14,13 +16,19 @@ export function ProgressBar({ value, max, label }) {
   );
 }
 
-export function PageHeader({ emoji, title, desc, children }) {
+/** Page banner. icon: a lucide icon, or gameKey to use that game's icon from games.js. */
+export function PageHeader({ icon, gameKey, title, desc, children }) {
+  const Icon = icon || (gameKey && gameByKey(gameKey)?.icon);
   return (
     <header className="relative overflow-hidden bg-gradient-to-br from-teal-dark via-teal to-emerald-500 text-white">
       <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-mint/20 blur-2xl" />
       <div className="container-page relative py-10 sm:py-14">
         <div className="animate-fade-up">
-          {emoji && <span className="mb-3 inline-block text-4xl" aria-hidden="true">{emoji}</span>}
+          {Icon && (
+            <span className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-white/15 ring-1 ring-white/30" aria-hidden="true">
+              <Icon className="h-7 w-7" strokeWidth={2.2} />
+            </span>
+          )}
           <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl">{title}</h1>
           {desc && <p className="mt-2 max-w-2xl text-mint-light/90">{desc}</p>}
           {children && <div className="mt-5">{children}</div>}
@@ -58,7 +66,7 @@ export function SpeakButton({ text, className = '', label }) {
   if (!canSpeak()) return null;
   return (
     <button type="button" onClick={() => speak(text)} className={`btn-soft !min-h-[40px] !px-3 ${className}`} aria-label={`${t('listen')}: ${text}`}>
-      <span aria-hidden="true">🔊</span>
+      <Volume2 className="h-4 w-4" aria-hidden="true" />
       {label && <span>{label}</span>}
     </button>
   );
@@ -72,8 +80,8 @@ export function GameCard({ game, index = 0 }) {
       className="group card flex flex-col p-5 transition duration-300 hover:-translate-y-1 hover:shadow-lift animate-fade-up"
       style={{ animationDelay: `${index * 40}ms` }}
     >
-      <span className={`mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${game.accent} text-2xl shadow-card transition group-hover:scale-110`} aria-hidden="true">
-        {game.emoji}
+      <span className={`mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${game.accent} text-white shadow-card transition group-hover:scale-110`} aria-hidden="true">
+        <game.icon className="h-7 w-7" strokeWidth={2.2} />
       </span>
       <h3 className="text-lg font-extrabold text-ink">{t(`game_${game.key}`)}</h3>
       <p className="mt-1 flex-1 text-sm text-ink-soft">{t(`desc_${game.key}`)}</p>
@@ -90,7 +98,9 @@ export function ResultCard({ correct, total, onRestart, children }) {
   const good = pct >= 70;
   return (
     <div className="card mx-auto max-w-xl p-8 text-center animate-pop">
-      <div className="text-6xl" aria-hidden="true">{good ? '🎉' : '💪'}</div>
+      <div className={`mx-auto inline-flex h-20 w-20 items-center justify-center rounded-full ${good ? 'bg-mint-light text-teal' : 'bg-amber-50 text-amber-500'}`} aria-hidden="true">
+        {good ? <PartyPopper className="h-10 w-10" /> : <Dumbbell className="h-10 w-10" />}
+      </div>
       <h2 className="mt-3 text-2xl font-extrabold text-ink">{good ? t('wellDone') : t('keepPracticing')}</h2>
       <p className="mt-2 text-ink-soft">{t('resultLine', { correct, total })}</p>
       <div className="mx-auto mt-5 max-w-xs">
@@ -111,6 +121,18 @@ export function ResultCard({ correct, total, onRestart, children }) {
         </Link>
       </div>
     </div>
+  );
+}
+
+/** "Correct!" / "Not quite" line shown after an answer. */
+export function Verdict({ ok }) {
+  const { t } = useI18n();
+  const Icon = ok ? CheckCircle2 : XCircle;
+  return (
+    <p className={`flex items-center gap-2 font-extrabold ${ok ? 'text-good' : 'text-bad'}`}>
+      <Icon className="h-5 w-5" aria-hidden="true" />
+      {ok ? t('correct') : t('wrong')}
+    </p>
   );
 }
 

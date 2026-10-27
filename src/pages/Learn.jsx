@@ -1,3 +1,4 @@
+import { GraduationCap } from 'lucide-react';
 import { useI18n } from '../i18n/index.jsx';
 import { GAMES, LEARN, gameByKey } from '../lib/games.js';
 import { useSeo } from '../lib/seo.js';
@@ -9,7 +10,7 @@ export default function Learn() {
   const items = [...LEARN, gameByKey('dictionary'), gameByKey('tips'), gameByKey('dailyWord')];
   return (
     <>
-      <PageHeader emoji="🎓" title={t('moreToLearn')} desc={t('heroSub')} />
+      <PageHeader icon={GraduationCap} title={t('moreToLearn')} desc={t('heroSub')} />
       <div className="container-page mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {items.map((g, i) => (
           <GameCard key={g.key} game={g} index={i} />

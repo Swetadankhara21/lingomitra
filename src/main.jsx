@@ -2,18 +2,21 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App.jsx';
+import ErrorBoundary from './components/ErrorBoundary.jsx';
 import { I18nProvider } from './i18n/index.jsx';
 import { ProgressProvider } from './lib/progress.jsx';
 import './index.css';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BrowserRouter>
-      <I18nProvider>
-        <ProgressProvider>
-          <App />
-        </ProgressProvider>
-      </I18nProvider>
-    </BrowserRouter>
+    <ErrorBoundary>
+      <BrowserRouter>
+        <I18nProvider>
+          <ProgressProvider>
+            <App />
+          </ProgressProvider>
+        </I18nProvider>
+      </BrowserRouter>
+    </ErrorBoundary>
   </StrictMode>,
 );

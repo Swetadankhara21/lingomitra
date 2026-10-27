@@ -1,3 +1,4 @@
+import { Compass, Handshake, Heart, Linkedin, Mail, ScrollText, ShieldCheck } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useI18n } from '../i18n/index.jsx';
 import { useSeo } from '../lib/seo.js';
@@ -21,7 +22,7 @@ export function About() {
   useSeo('About LingoMitra', `About LingoMitra, free English learning games for Gujarati and Indian learners, created by ${OWNER.name}.`);
   return (
     <>
-      <PageHeader emoji="🤝" title={t('nav_about')} desc={t('footerTag')} />
+      <PageHeader icon={Handshake} title={t('nav_about')} desc={t('footerTag')} />
       <div className="container-page">
         <Prose>
           <h2>What is LingoMitra?</h2>
@@ -57,7 +58,7 @@ export function Contact() {
   useSeo('Contact', 'Contact the LingoMitra team with feedback, suggestions or corrections.');
   return (
     <>
-      <PageHeader emoji="✉️" title={t('nav_contact')} desc="Feedback, ideas and corrections are always welcome." />
+      <PageHeader icon={Mail} title={t('nav_contact')} desc="Feedback, ideas and corrections are always welcome." />
       <div className="container-page">
         <Prose>
           <h2>Get in touch</h2>
@@ -67,7 +68,7 @@ export function Contact() {
           </p>
           <p className="!mt-6">
             <a href={OWNER.linkedin} target="_blank" rel="noopener noreferrer" className="btn-primary !text-white !no-underline">
-              💼 Message on LinkedIn
+              <Linkedin className="h-4 w-4" aria-hidden="true" /> Message on LinkedIn
             </a>
           </p>
           <h2>Reporting a wrong meaning</h2>
@@ -86,7 +87,7 @@ export function Privacy() {
   useSeo('Privacy Policy', 'LingoMitra privacy policy: no account, no personal data collected; progress is stored only in your browser.');
   return (
     <>
-      <PageHeader emoji="🔒" title={t('nav_privacy')} desc={`Last updated: ${UPDATED}`} />
+      <PageHeader icon={ShieldCheck} title={t('nav_privacy')} desc={`Last updated: ${UPDATED}`} />
       <div className="container-page">
         <Prose>
           <h2>Summary</h2>
@@ -127,7 +128,7 @@ export function Terms() {
   useSeo('Terms of Use', 'Terms of use for LingoMitra free English learning games.');
   return (
     <>
-      <PageHeader emoji="📜" title={t('nav_terms')} desc={`Last updated: ${UPDATED}`} />
+      <PageHeader icon={ScrollText} title={t('nav_terms')} desc={`Last updated: ${UPDATED}`} />
       <div className="container-page">
         <Prose>
           <h2>Using LingoMitra</h2>
@@ -160,7 +161,7 @@ export function Credits() {
   useSeo('Credits & Licences', 'Credits and licences for the data used on LingoMitra, including Wiktionary dictionary data.');
   return (
     <>
-      <PageHeader emoji="🙏" title={t('nav_credits')} desc="Open data that makes LingoMitra possible." />
+      <PageHeader icon={Heart} title={t('nav_credits')} desc="Open data that makes LingoMitra possible." />
       <div className="container-page">
         <Prose>
           <h2>Dictionary data</h2>
@@ -194,7 +195,7 @@ export function NotFound() {
   useSeo('Page not found', 'This page does not exist. Play free English learning games on LingoMitra.');
   return (
     <div className="container-page py-24 text-center">
-      <p className="text-7xl" aria-hidden="true">🧭</p>
+      <Compass className="mx-auto h-20 w-20 text-teal" aria-hidden="true" />
       <h1 className="mt-4 text-3xl font-extrabold text-ink">404</h1>
       <p className="mt-2 text-ink-soft">{t('noResults')}</p>
       <Link to="/" className="btn-primary mt-6">

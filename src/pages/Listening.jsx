@@ -1,3 +1,4 @@
+import { VolumeX } from 'lucide-react';
 import { useCallback, useMemo, useState } from 'react';
 import { useI18n } from '../i18n/index.jsx';
 import { useProgress } from '../lib/progress.jsx';
@@ -23,7 +24,7 @@ export default function Listening() {
       shuffle(pool)
         .slice(0, n)
         .map((text) => ({
-          prompt: `🎧 ${t('listen')}…`,
+          prompt: `${t('listen')}…`,
           speak: text,
           options: [text, ...shuffle(pool.filter((o) => o !== text)).slice(0, 3)],
           answer: 0,
@@ -35,7 +36,7 @@ export default function Listening() {
 
   return (
     <>
-      <PageHeader emoji="🎧" title={t('game_listening')} desc={t('desc_listening')}>
+      <PageHeader gameKey="listening" title={t('game_listening')} desc={t('desc_listening')}>
         <LevelPicker />
       </PageHeader>
       <div className="container-page mt-8">
@@ -43,7 +44,7 @@ export default function Listening() {
           <QuizEngine questions={questions} gameId="listening" onRestart={restart} />
         ) : (
           <div className="card mx-auto max-w-xl p-8 text-center">
-            <p className="text-5xl" aria-hidden="true">🔇</p>
+            <VolumeX className="mx-auto h-14 w-14 text-ink-soft" aria-hidden="true" />
             <p className="mt-4 font-semibold text-ink">{t('speechNotSupported')}</p>
           </div>
         )}

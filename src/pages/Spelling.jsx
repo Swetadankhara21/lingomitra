@@ -19,7 +19,7 @@ export default function Spelling() {
       shuffle(byLevel(spelling, level, 10))
         .slice(0, 10)
         .map((s) => ({
-          prompt: '🔤 ?',
+          prompt: t('spellingPrompt'),
           sub: t('game_spelling'),
           speak: s.correct,
           options: [s.correct, ...s.wrong],
@@ -32,7 +32,7 @@ export default function Spelling() {
 
   return (
     <>
-      <PageHeader emoji="🔤" title={t('game_spelling')} desc={t('desc_spelling')}>
+      <PageHeader gameKey="spelling" title={t('game_spelling')} desc={t('desc_spelling')}>
         <LevelPicker />
       </PageHeader>
       <div className="container-page mt-8">

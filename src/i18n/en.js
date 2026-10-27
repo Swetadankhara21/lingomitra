@@ -105,6 +105,7 @@ export default {
   desc_songs: 'Easy English rhymes to sing along and remember words.',
   game_stories: 'Short Stories',
   desc_stories: 'Simple stories with meanings and a quick quiz.',
+  spellingPrompt: 'Which spelling is correct?',
   chooseLevel: 'Choose your level',
   // footer
   footerTag: 'Free English learning games for Gujarati and Indian learners.',

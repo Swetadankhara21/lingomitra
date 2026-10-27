@@ -27,7 +27,7 @@ export default function Grammar() {
 
   return (
     <>
-      <PageHeader emoji="✍️" title={t('game_grammar')} desc={t('desc_grammar')}>
+      <PageHeader gameKey="grammar" title={t('game_grammar')} desc={t('desc_grammar')}>
         <div className="flex flex-col gap-3">
           <LevelPicker />
           <div className="flex flex-wrap gap-2">

@@ -1,3 +1,4 @@
+import { CalendarCheck } from 'lucide-react';
 import { useMemo } from 'react';
 import { useI18n } from '../i18n/index.jsx';
 import { useProgress } from '../lib/progress.jsx';
@@ -13,9 +14,9 @@ const BONUS = 50;
 
 /** Today's 10 questions - the same for everyone, new every day. */
 function todaysQuestions(day) {
-  const g = seededShuffle(grammar, `g${day}`).slice(0, 4).map((q) => ({ prompt: q.q, sub: `✍️ ${q.topic}`, options: q.options, answer: q.answer, explanation: q.explanation }));
-  const gu = seededShuffle(gujaratiQuiz, `gu${day}`).slice(0, 3).map((q) => ({ prompt: q.gu, sub: '🔁 ગુજરાતી → English', options: q.options, answer: 0, explanation: q.explanation }));
-  const sp = seededShuffle(spelling, `s${day}`).slice(0, 3).map((s) => ({ prompt: '🔤 Which spelling is correct?', sub: '🔤 Spelling', options: [s.correct, ...s.wrong], answer: 0, speak: s.correct }));
+  const g = seededShuffle(grammar, `g${day}`).slice(0, 4).map((q) => ({ prompt: q.q, sub: q.topic, options: q.options, answer: q.answer, explanation: q.explanation }));
+  const gu = seededShuffle(gujaratiQuiz, `gu${day}`).slice(0, 3).map((q) => ({ prompt: q.gu, sub: 'ગુજરાતી → English', options: q.options, answer: 0, explanation: q.explanation }));
+  const sp = seededShuffle(spelling, `s${day}`).slice(0, 3).map((s) => ({ prompt: 'Which spelling is correct?', sub: 'Spelling', options: [s.correct, ...s.wrong], answer: 0, speak: s.correct }));
   return seededShuffle([...g, ...gu, ...sp], `all${day}`);
 }
 
@@ -35,11 +36,11 @@ export default function DailyChallenge() {
 
   return (
     <>
-      <PageHeader emoji="🏆" title={t('game_daily')} desc={`${t('desc_daily')} (+${BONUS} ${t('points')})`} />
+      <PageHeader gameKey="daily" title={t('game_daily')} desc={`${t('desc_daily')} (+${BONUS} ${t('points')})`} />
       <div className="container-page mt-8">
         {done ? (
           <ResultCard correct={done.correct} total={done.total}>
-            <p className="mt-4 rounded-2xl bg-mint-light p-3 text-sm font-bold text-teal-dark ring-1 ring-mint">✅ {t('completed')} · {day} · 🌅 {t('desc_daily')}</p>
+            <p className="mt-4 flex items-center justify-center gap-2 rounded-2xl bg-mint-light p-3 text-sm font-bold text-teal-dark ring-1 ring-mint"><CalendarCheck className="h-4 w-4" aria-hidden="true" /> {t('completed')} · {day} · {t('desc_daily')}</p>
           </ResultCard>
         ) : (
           <QuizEngine questions={questions} gameId="daily" onFinish={finish} />

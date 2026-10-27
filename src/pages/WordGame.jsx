@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
+import { CheckCircle2, Layers, Target } from 'lucide-react';
 import { useI18n } from '../i18n/index.jsx';
 import { useProgress } from '../lib/progress.jsx';
 import { useSeo } from '../lib/seo.js';
@@ -60,7 +61,8 @@ function Flashcards({ words }) {
           onClick={() => markWordLearned(w.word)}
           disabled={known}
         >
-          {known ? `✅ ${t('learned')}` : t('markLearned')}
+          {known && <CheckCircle2 className="h-4 w-4" aria-hidden="true" />}
+          {known ? t('learned') : t('markLearned')}
         </button>
         <button type="button" className="btn-primary" onClick={() => go(1)}>
           {t('next')} →
@@ -110,7 +112,7 @@ export default function WordGame() {
 
   return (
     <>
-      <PageHeader emoji="🧠" title={t('game_vocabulary')} desc={t('desc_vocabulary')}>
+      <PageHeader gameKey="vocabulary" title={t('game_vocabulary')} desc={t('desc_vocabulary')}>
         <div className="flex flex-col gap-3">
           <LevelPicker />
           <MeaningLangPicker value={meaningLang} onChange={setMeaningLang} />
@@ -119,17 +121,18 @@ export default function WordGame() {
       <div className="container-page mt-8">
         <div className="mx-auto mb-6 flex max-w-xs rounded-2xl bg-white p-1 shadow-card" role="tablist">
           {[
-            ['learn', `📇 ${t('nav_learn')}`],
-            ['quiz', `🎯 ${t('play')}`],
-          ].map(([m, label]) => (
+            ['learn', t('nav_learn'), Layers],
+            ['quiz', t('play'), Target],
+          ].map(([m, label, Icon]) => (
             <button
               key={m}
               type="button"
               role="tab"
               aria-selected={mode === m}
               onClick={() => setMode(m)}
-              className={`flex-1 rounded-xl px-4 py-2.5 text-sm font-bold transition ${mode === m ? 'bg-teal text-white shadow-lift' : 'text-ink hover:bg-mint-light'}`}
+              className={`flex flex-1 items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-bold transition ${mode === m ? 'bg-teal text-white shadow-lift' : 'text-ink hover:bg-mint-light'}`}
             >
+              <Icon className="h-4 w-4" aria-hidden="true" />
               {label}
             </button>
           ))}

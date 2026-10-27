@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { CheckCircle2, Flame, Sparkles, Star, TrendingUp, Trophy, Zap } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useI18n } from '../i18n/index.jsx';
 import { GAMES, LEARN } from '../lib/games.js';
@@ -41,7 +42,7 @@ export default function Home() {
             <p className="mt-4 max-w-xl text-lg text-mint-light/90">{t('heroSub')}</p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link to="/daily-challenge" className="btn bg-white text-teal-dark shadow-lift hover:-translate-y-0.5 hover:bg-mint-light">
-                🏆 {t('startPlaying')}
+                <Trophy className="h-4 w-4" aria-hidden="true" /> {t('startPlaying')}
               </Link>
               <Link to="/games" className="btn bg-white/10 text-white ring-1 ring-white/40 hover:bg-white/20">
                 {t('exploreGames')} →
@@ -50,17 +51,23 @@ export default function Home() {
           </div>
           <div className="relative hidden lg:block" aria-hidden="true">
             <div className="card animate-float p-6 text-ink">
-              <p className="chip">🌟 {t('game_dailyWord')}</p>
+              <p className="chip">
+                <Sparkles className="h-3.5 w-3.5" /> {t('game_dailyWord')}
+              </p>
               <p className="mt-4 text-4xl font-extrabold text-teal-dark">opportunity</p>
               <p className="mt-1 text-ink-soft">/ˌɒpəˈtjuːnɪti/</p>
               <p className="mt-3 text-lg font-bold">તક · अवसर · Gelegenheit · okazja</p>
               <div className="mt-5 grid grid-cols-2 gap-3">
                 <div className="rounded-2xl bg-mint-light p-3 text-center">
-                  <p className="text-2xl font-extrabold text-teal">⭐ {points}</p>
+                  <p className="flex items-center justify-center gap-1.5 text-2xl font-extrabold text-teal">
+                    <Star className="h-5 w-5 fill-amber-400 text-amber-400" /> {points}
+                  </p>
                   <p className="text-xs text-ink-soft">{t('points')}</p>
                 </div>
                 <div className="rounded-2xl bg-mint-light p-3 text-center">
-                  <p className="text-2xl font-extrabold text-teal">🔥 {streak}</p>
+                  <p className="flex items-center justify-center gap-1.5 text-2xl font-extrabold text-teal">
+                    <Flame className="h-5 w-5 text-orange-500" /> {streak}
+                  </p>
                   <p className="text-xs text-ink-soft">{t('streak')}</p>
                 </div>
               </div>
@@ -104,12 +111,14 @@ export default function Home() {
           <h2 className="h-section">{t('whyTitle')}</h2>
           <ul className="mt-6 grid gap-4 sm:grid-cols-3">
             {[
-              ['⚡', t('why1')],
-              ['✅', t('why2')],
-              ['📈', t('why3')],
-            ].map(([icon, text]) => (
+              [Zap, t('why1')],
+              [CheckCircle2, t('why2')],
+              [TrendingUp, t('why3')],
+            ].map(([Icon, text]) => (
               <li key={text} className="rounded-2xl bg-white p-5 shadow-card">
-                <span className="text-3xl" aria-hidden="true">{icon}</span>
+                <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-mint-light text-teal" aria-hidden="true">
+                  <Icon className="h-6 w-6" />
+                </span>
                 <p className="mt-2 font-semibold text-ink">{text}</p>
               </li>
             ))}

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Globe, Menu, Star, X } from 'lucide-react';
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
 import { LANGUAGES, useI18n } from '../i18n/index.jsx';
 import { useProgress } from '../lib/progress.jsx';
@@ -21,7 +22,7 @@ function LanguageSelect({ className = '' }) {
   return (
     <label className={`flex items-center gap-2 ${className}`}>
       <span className="sr-only">{t('language')}</span>
-      <span aria-hidden="true">🌐</span>
+      <Globe className="h-5 w-5 text-teal" aria-hidden="true" />
       <select
         value={lang}
         onChange={(e) => setLang(e.target.value)}
@@ -68,7 +69,7 @@ function Navbar() {
         </div>
         <div className="flex items-center gap-2">
           <span className="chip hidden sm:inline-flex" title={t('points')}>
-            ⭐ {points}
+            <Star className="h-3.5 w-3.5 fill-amber-400 text-amber-400" aria-hidden="true" /> {points}
           </span>
           <LanguageSelect className="hidden md:flex" />
           <button
@@ -79,7 +80,7 @@ function Navbar() {
             onClick={() => setOpen((o) => !o)}
           >
             <span className="sr-only">{t('menu')}</span>
-            <span aria-hidden="true" className="text-2xl leading-none">{open ? '✕' : '☰'}</span>
+            {open ? <X className="h-6 w-6" aria-hidden="true" /> : <Menu className="h-6 w-6" aria-hidden="true" />}
           </button>
         </div>
       </nav>

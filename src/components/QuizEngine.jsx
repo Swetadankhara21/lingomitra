@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { useI18n } from '../i18n/index.jsx';
 import { useProgress } from '../lib/progress.jsx';
 import { shuffle } from '../lib/utils.js';
-import { ProgressBar, ResultCard, SpeakButton } from './ui.jsx';
+import { ProgressBar, ResultCard, SpeakButton, Verdict } from './ui.jsx';
 
 /**
  * Multiple-choice game: one question at a time, instant feedback with the
@@ -104,7 +104,7 @@ export default function QuizEngine({ questions, gameId, onRestart, onFinish, pro
 
         {answered && (
           <div className={`mt-5 rounded-2xl p-4 animate-fade-up ${isRight ? 'bg-green-50 ring-1 ring-green-200' : 'bg-red-50 ring-1 ring-red-200'}`} aria-live="polite">
-            <p className={`font-extrabold ${isRight ? 'text-good' : 'text-bad'}`}>{isRight ? `✅ ${t('correct')}` : `❌ ${t('wrong')}`}</p>
+            <Verdict ok={isRight} />
             {!isRight && (
               <p className="mt-1 text-ink">
                 {t('correctAnswer')}: <strong>{q.options[q.answer]}</strong>

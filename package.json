@@ -12,6 +12,7 @@
     "dictionary": "curl -s https://kaikki.org/dictionary/English/kaikki.org-dictionary-English.jsonl | node scripts/build-dictionary.mjs scripts/tmp/en_50k.txt"
   },
   "dependencies": {
+    "lucide-react": "0.453.0",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-router-dom": "6.26.2"

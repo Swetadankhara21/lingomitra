@@ -101,6 +101,7 @@ export default {
   desc_songs: 'Proste angielskie rymowanki do śpiewania.',
   game_stories: 'Krótkie historyjki',
   desc_stories: 'Proste historyjki ze znaczeniami i krótkim quizem.',
+  spellingPrompt: 'Która pisownia jest poprawna?',
   chooseLevel: 'Wybierz poziom',
   footerTag: 'Darmowe gry do nauki angielskiego dla uczniów z Indii i całego świata.',
   madeBy: 'Autorka',

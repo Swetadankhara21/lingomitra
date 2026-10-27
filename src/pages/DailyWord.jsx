@@ -1,3 +1,4 @@
+import { CheckCircle2 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useI18n } from '../i18n/index.jsx';
@@ -27,7 +28,7 @@ export default function DailyWord() {
 
   return (
     <>
-      <PageHeader emoji="🌟" title={t('game_dailyWord')} desc={new Date().toLocaleDateString(undefined, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })} />
+      <PageHeader gameKey="dailyWord" title={t('game_dailyWord')} desc={new Date().toLocaleDateString(undefined, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })} />
       <div className="container-page mt-8">
         <article className="card mx-auto max-w-2xl p-6 text-center sm:p-10 animate-pop">
           <span className="chip">
@@ -60,7 +61,8 @@ export default function DailyWord() {
 
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <button type="button" className={known ? 'btn bg-green-50 text-good ring-1 ring-green-200' : 'btn-primary'} disabled={known} onClick={() => markWordLearned(w.word)}>
-              {known ? `✅ ${t('learned')}` : t('markLearned')}
+              {known && <CheckCircle2 className="h-4 w-4" aria-hidden="true" />}
+              {known ? t('learned') : t('markLearned')}
             </button>
             <Link to="/word-game" className="btn-soft">
               {t('game_vocabulary')} →

@@ -101,6 +101,7 @@ export default {
   desc_songs: 'Einfache englische Reime zum Mitsingen.',
   game_stories: 'Kurzgeschichten',
   desc_stories: 'Einfache Geschichten mit Bedeutungen und einem kurzen Quiz.',
+  spellingPrompt: 'Welche Schreibweise ist richtig?',
   chooseLevel: 'Wähle deine Stufe',
   footerTag: 'Kostenlose Englisch-Lernspiele für Lernende aus Indien und der ganzen Welt.',
   madeBy: 'Erstellt von',

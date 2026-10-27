@@ -1,3 +1,4 @@
+import { BookMarked, BookOpen, Play, Square, Target } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import { useI18n } from '../i18n/index.jsx';
 import { useSeo } from '../lib/seo.js';
@@ -25,14 +26,14 @@ function Story({ story, onBack }) {
       </button>
       <p className="chip mt-2">{t(story.level)}</p>
       <h2 className="mt-3 text-3xl font-extrabold text-ink">
-        {story.emoji} {story.title}
+        {story.title}
       </h2>
       <div className="mt-4 flex flex-wrap gap-2">
         <button type="button" className="btn-primary" onClick={() => speak(story.text.join(' '), { rate: 0.85 })}>
-          ▶ {t('listen')}
+          <Play className="h-4 w-4" aria-hidden="true" /> {t('listen')}
         </button>
         <button type="button" className="btn-soft" onClick={stopSpeaking}>
-          ⏹
+          <Square className="h-4 w-4" aria-hidden="true" /><span className="sr-only">Stop</span>
         </button>
         <button type="button" className="btn-soft" onClick={() => setShowGu((v) => !v)} aria-pressed={showGu}>
           ગુજરાતી
@@ -44,7 +45,7 @@ function Story({ story, onBack }) {
           <p key={i}>{p}</p>
         ))}
       </div>
-      <h3 className="mt-8 font-extrabold text-ink">📚 Words</h3>
+      <h3 className="mt-8 flex items-center gap-2 font-extrabold text-ink"><BookOpen className="h-5 w-5 text-teal" aria-hidden="true" /> Words</h3>
       <ul className="mt-3 flex flex-wrap gap-2">
         {story.words.map(([en, gu]) => (
           <li key={en} className="flex items-center gap-2 rounded-2xl bg-mint-light px-3 py-2 ring-1 ring-mint">
@@ -59,7 +60,7 @@ function Story({ story, onBack }) {
           <QuizEngine questions={questions} gameId="stories" onRestart={() => setRound((r) => r + 1)} />
         ) : (
           <button type="button" className="btn-primary w-full" onClick={() => setQuiz(true)}>
-            🎯 {t('start')} quiz
+            <Target className="h-4 w-4" aria-hidden="true" /> {t('start')} quiz
           </button>
         )}
       </div>
@@ -76,7 +77,7 @@ export default function Stories() {
 
   return (
     <>
-      <PageHeader emoji="📚" title={t('game_stories')} desc={t('desc_stories')} />
+      <PageHeader gameKey="stories" title={t('game_stories')} desc={t('desc_stories')} />
       <div className="container-page mt-8">
         {open ? (
           <Story story={open} onBack={() => setOpenId(null)} />
@@ -90,7 +91,7 @@ export default function Stories() {
                   className="card flex h-full w-full flex-col p-6 text-left transition hover:-translate-y-1 hover:shadow-lift animate-fade-up"
                   style={{ animationDelay: `${i * 40}ms` }}
                 >
-                  <span className="text-4xl" aria-hidden="true">{s.emoji}</span>
+                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-dark text-white" aria-hidden="true"><BookMarked className="h-6 w-6" /></span>
                   <span className="chip mt-3 w-fit">{t(s.level)}</span>
                   <span className="mt-2 text-xl font-extrabold text-ink">{s.title}</span>
                   <span className="mt-2 line-clamp-3 text-sm text-ink-soft">{s.text[0]}</span>

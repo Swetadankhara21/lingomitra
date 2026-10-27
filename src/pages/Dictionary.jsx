@@ -53,7 +53,7 @@ export default function Dictionary() {
 
   return (
     <>
-      <PageHeader emoji="📖" title={t('game_dictionary')} desc={index ? `${index.total.toLocaleString('en-IN')} ${t('statWords')}` : t('desc_dictionary')}>
+      <PageHeader gameKey="dictionary" title={t('game_dictionary')} desc={index ? `${index.total.toLocaleString('en-IN')} ${t('statWords')}` : t('desc_dictionary')}>
         <MeaningLangPicker value={meaningLang} onChange={setMeaningLang} />
       </PageHeader>
 

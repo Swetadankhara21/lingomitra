@@ -1,3 +1,4 @@
+import { BookOpen, Flame, History, Keyboard, Star, Target, Trophy } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useI18n } from '../i18n/index.jsx';
 import { useProgress } from '../lib/progress.jsx';
@@ -19,12 +20,12 @@ export default function Dashboard() {
   const playedCount = tracked.filter(({ s }) => s).length;
 
   const cards = [
-    ['⭐', p.points, t('points')],
-    ['🔥', p.streak, t('streak')],
-    ['🎯', `${percent(totals.correct, totals.total)}%`, t('accuracy')],
-    ['📚', p.learnedWords.length, t('learned')],
-    ['⌨️', p.bestWpm, t('wpm')],
-    ['🏆', Object.keys(p.dailyDone).length, t('game_daily')],
+    [Star, p.points, t('points')],
+    [Flame, p.streak, t('streak')],
+    [Target, `${percent(totals.correct, totals.total)}%`, t('accuracy')],
+    [BookOpen, p.learnedWords.length, t('learned')],
+    [Keyboard, p.bestWpm, t('wpm')],
+    [Trophy, Object.keys(p.dailyDone).length, t('game_daily')],
   ];
 
   const reset = () => {
@@ -33,12 +34,14 @@ export default function Dashboard() {
 
   return (
     <>
-      <PageHeader emoji="📊" title={t('game_dashboard')} desc={t('desc_dashboard')} />
+      <PageHeader gameKey="dashboard" title={t('game_dashboard')} desc={t('desc_dashboard')} />
       <div className="container-page mt-8">
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
-          {cards.map(([icon, value, label], i) => (
+          {cards.map(([Icon, value, label], i) => (
             <div key={label} className="card p-5 text-center animate-fade-up" style={{ animationDelay: `${i * 40}ms` }}>
-              <p className="text-2xl" aria-hidden="true">{icon}</p>
+              <span className="mx-auto inline-flex h-10 w-10 items-center justify-center rounded-xl bg-mint-light text-teal" aria-hidden="true">
+                <Icon className="h-5 w-5" />
+              </span>
               <p className="mt-1 text-3xl font-extrabold text-teal">{value}</p>
               <p className="text-xs font-semibold text-ink-soft">{label}</p>
             </div>
@@ -57,7 +60,7 @@ export default function Dashboard() {
               <li key={g.key} className="rounded-2xl bg-bg p-4">
                 <div className="flex items-center justify-between gap-3">
                   <Link to={g.path} className="font-bold text-ink hover:text-teal">
-                    <span aria-hidden="true">{g.emoji}</span> {t(`game_${g.key}`)}
+                    <g.icon className="mr-1.5 inline h-4 w-4 text-teal" aria-hidden="true" /> {t(`game_${g.key}`)}
                   </Link>
                   <span className="text-sm font-bold text-teal">{s ? `${percent(s.correct, s.total)}%` : '—'}</span>
                 </div>
@@ -74,7 +77,7 @@ export default function Dashboard() {
 
         {p.history.length > 0 && (
           <section className="card mt-8 p-6">
-            <h2 className="text-xl font-extrabold text-ink">🕑 History</h2>
+            <h2 className="flex items-center gap-2 text-xl font-extrabold text-ink"><History className="h-5 w-5 text-teal" aria-hidden="true" /> History</h2>
             <ul className="mt-4 divide-y divide-mint-light">
               {p.history
                 .filter((h) => h.total > 0)

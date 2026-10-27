@@ -4,7 +4,7 @@ import { useProgress } from '../lib/progress.jsx';
 import { useSeo } from '../lib/seo.js';
 import { byLevel, shuffle } from '../lib/utils.js';
 import { sentences } from '../data/sentences.js';
-import { LevelPicker, PageHeader, ProgressBar, ResultCard, SpeakButton } from '../components/ui.jsx';
+import { LevelPicker, PageHeader, ProgressBar, ResultCard, SpeakButton, Verdict } from '../components/ui.jsx';
 
 const ROUND = 6;
 const tokens = (s) => s.split(' ').map((w, i) => ({ id: i, w }));
@@ -58,7 +58,7 @@ export default function SentenceBuilder() {
   function wrap(children) {
     return (
       <>
-        <PageHeader emoji="🧩" title={t('game_sentence')} desc={t('desc_sentence')}>
+        <PageHeader gameKey="sentence" title={t('game_sentence')} desc={t('desc_sentence')}>
           <LevelPicker />
         </PageHeader>
         <div className="container-page mt-8">{children}</div>
@@ -115,7 +115,7 @@ export default function SentenceBuilder() {
 
       {status && (
         <div className={`mt-5 rounded-2xl p-4 animate-fade-up ${status === 'right' ? 'bg-green-50 ring-1 ring-green-200' : 'bg-red-50 ring-1 ring-red-200'}`} aria-live="polite">
-          <p className={`font-extrabold ${status === 'right' ? 'text-good' : 'text-bad'}`}>{status === 'right' ? `✅ ${t('correct')}` : `❌ ${t('wrong')}`}</p>
+          <Verdict ok={status === 'right'} />
           <div className="mt-1 flex items-center gap-2 text-ink">
             <span>
               {t('correctAnswer')}: <strong>{s.en}</strong>

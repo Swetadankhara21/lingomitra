@@ -25,7 +25,7 @@ export default function GujaratiQuiz() {
 
   return (
     <>
-      <PageHeader emoji="🔁" title={t('game_gujarati')} desc={t('desc_gujarati')}>
+      <PageHeader gameKey="gujarati" title={t('game_gujarati')} desc={t('desc_gujarati')}>
         <LevelPicker />
       </PageHeader>
       <div className="container-page mt-8">

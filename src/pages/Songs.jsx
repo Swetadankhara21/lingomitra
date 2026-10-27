@@ -1,3 +1,4 @@
+import { BookOpen, Music, Play, Square } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { useI18n } from '../i18n/index.jsx';
 import { useSeo } from '../lib/seo.js';
@@ -49,7 +50,7 @@ export default function Songs() {
 
   return (
     <>
-      <PageHeader emoji="🎵" title={t('game_songs')} desc={t('desc_songs')} />
+      <PageHeader gameKey="songs" title={t('game_songs')} desc={t('desc_songs')} />
       <div className="container-page mt-8 grid gap-6 lg:grid-cols-[280px_1fr]">
         <nav className="card h-fit p-3" aria-label={t('game_songs')}>
           <ul className="grid gap-1">
@@ -64,7 +65,7 @@ export default function Songs() {
                   aria-current={open === s.id}
                   className={`flex w-full items-center gap-3 rounded-2xl px-3 py-2.5 text-left font-bold transition ${open === s.id ? 'bg-teal text-white' : 'text-ink hover:bg-mint-light'}`}
                 >
-                  <span aria-hidden="true" className="text-xl">{s.emoji}</span>
+                  <Music className="h-5 w-5 shrink-0" aria-hidden="true" />
                   {s.title}
                 </button>
               </li>
@@ -80,17 +81,17 @@ export default function Songs() {
                 <div>
                   <p className="chip">{t(s.level)}</p>
                   <h2 className="mt-2 text-2xl font-extrabold text-ink sm:text-3xl">
-                    {s.emoji} {s.title}
+                    {s.title}
                   </h2>
                 </div>
                 {canSpeak() ? (
                   line >= 0 ? (
                     <button type="button" className="btn-soft" onClick={stop}>
-                      ⏹ Stop
+                      <Square className="h-4 w-4" aria-hidden="true" /> Stop
                     </button>
                   ) : (
                     <button type="button" className="btn-primary" onClick={() => play(s.lines)}>
-                      ▶ {t('listen')}
+                      <Play className="h-4 w-4" aria-hidden="true" /> {t('listen')}
                     </button>
                   )
                 ) : (
@@ -104,7 +105,7 @@ export default function Songs() {
                   </li>
                 ))}
               </ol>
-              <h3 className="mt-8 font-extrabold text-ink">📚 Words</h3>
+              <h3 className="mt-8 flex items-center gap-2 font-extrabold text-ink"><BookOpen className="h-5 w-5 text-teal" aria-hidden="true" /> Words</h3>
               <ul className="mt-3 flex flex-wrap gap-2">
                 {s.words.map(([en, gu]) => (
                   <li key={en} className="flex items-center gap-2 rounded-2xl bg-mint-light px-3 py-2 ring-1 ring-mint">

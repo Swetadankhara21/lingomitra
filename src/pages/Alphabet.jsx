@@ -19,7 +19,7 @@ export default function Alphabet() {
 
   return (
     <>
-      <PageHeader emoji="🔠" title={t('game_alphabet')} desc={t('desc_alphabet')} />
+      <PageHeader gameKey="alphabet" title={t('game_alphabet')} desc={t('desc_alphabet')} />
       <div className="container-page mt-8 grid gap-6 lg:grid-cols-[1fr_1.1fr]">
         <div className="card p-4 sm:p-6">
           <div className="grid grid-cols-6 gap-2 sm:grid-cols-7">

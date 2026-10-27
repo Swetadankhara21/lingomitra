@@ -5,7 +5,7 @@ import { useSeo } from '../lib/seo.js';
 import { OWNER } from '../lib/owner.js';
 import { PageHeader } from '../components/ui.jsx';
 
-const UPDATED = '27 October 2026';
+const UPDATED = '28 October 2026';
 
 function Prose({ children }) {
   return <div className="card mx-auto mt-8 max-w-3xl p-6 leading-relaxed text-ink sm:p-10 [&_h2]:mt-8 [&_h2]:text-xl [&_h2]:font-extrabold [&_h2:first-child]:mt-0 [&_li]:mt-1 [&_p]:mt-3 [&_ul]:mt-3 [&_ul]:list-disc [&_ul]:pl-6 [&_a]:font-bold [&_a]:text-teal [&_a]:underline [&_a]:decoration-mint [&_a]:underline-offset-4">{children}</div>;
@@ -107,9 +107,15 @@ export function Privacy() {
           </p>
           <h2>Advertising</h2>
           <p>
-            If advertising is added in the future (for example Google AdSense), third-party vendors including Google may use cookies to show ads based on your
-            visits to this and other websites. You will be able to opt out of personalised advertising in Google’s Ads Settings. This policy will be updated
-            before any such change.
+            LingoMitra shows ads through Google AdSense to keep the games free. Third-party vendors, including Google, use cookies to serve ads based on your
+            previous visits to this website and other websites. Google’s use of advertising cookies enables it and its partners to serve ads based on your
+            visits to this and other sites on the Internet.
+          </p>
+          <p>
+            You can opt out of personalised advertising in{' '}
+            <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer">Google Ads Settings</a>, or opt out of some third-party vendors’ use
+            of cookies at <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer">aboutads.info</a>. Learn more in{' '}
+            <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer">how Google uses data from sites that use its services</a>.
           </p>
           <h2>Children</h2>
           <p>LingoMitra is suitable for learners of all ages and does not knowingly collect personal information from anyone, including children.</p>

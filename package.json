@@ -9,7 +9,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "dictionary": "curl -s https://kaikki.org/dictionary/English/kaikki.org-dictionary-English.jsonl | node scripts/build-dictionary.mjs scripts/tmp/en_50k.txt"
+    "dictionary": "node --max-old-space-size=8192 scripts/build-dictionary.mjs"
   },
   "dependencies": {
     "lucide-react": "0.453.0",

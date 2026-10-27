@@ -41,13 +41,15 @@ npm run preview
 
 ## Dictionary data (optional rebuild)
 
-`public/dict/*.json` is generated from the Wiktionary English extract (kaikki.org, CC BY-SA 4.0):
+`public/dict/*.json` is generated from Wiktionary (kaikki.org extracts, CC BY-SA 4.0). It merges the English entries' translation tables with the Gujarati, Hindi, German and Polish entries' English meanings (read in reverse), ranked by word frequency:
 
 ```bash
-mkdir -p scripts/tmp
-curl -sL -o scripts/tmp/en_50k.txt https://raw.githubusercontent.com/hermitdave/FrequencyWords/master/content/2018/en/en_50k.txt
-curl -sL -o scripts/tmp/wiktionary-en.jsonl https://kaikki.org/dictionary/English/kaikki.org-dictionary-English.jsonl   # ~3.4 GB
-node scripts/build-dictionary.mjs scripts/tmp/en_50k.txt < scripts/tmp/wiktionary-en.jsonl
+mkdir -p scripts/tmp && cd scripts/tmp
+curl -sL -o en_50k.txt https://raw.githubusercontent.com/hermitdave/FrequencyWords/master/content/2018/en/en_50k.txt
+curl -sL -o wiktionary-en.jsonl https://kaikki.org/dictionary/English/kaikki.org-dictionary-English.jsonl   # ~3.4 GB
+for L in Gujarati Hindi German Polish; do curl -sL -o wiktionary-$L.jsonl https://kaikki.org/dictionary/$L/kaikki.org-dictionary-$L.jsonl; done   # ~2.2 GB
+cd ../..
+npm run dictionary
 ```
 
 ## Deploy on Vercel

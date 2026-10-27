@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { CheckCircle2, Flame, Sparkles, Star, TrendingUp, Trophy, Zap } from 'lucide-react';
+import { ArrowRight, BookOpen, CheckCircle2, Flame, Gamepad2, Languages, Sparkles, Star, TrendingUp, Trophy, Zap } from 'lucide-react';
+import { GridFloor, LetterCube, Orb, Tilt } from '../components/Scene3D.jsx';
 import { Link } from 'react-router-dom';
 import { useI18n } from '../i18n/index.jsx';
 import { GAMES, LEARN } from '../lib/games.js';
@@ -25,63 +26,82 @@ export default function Home() {
   }, []);
 
   const stats = [
-    [words ? words.toLocaleString('en-IN') : '50,000', t('statWords')],
-    [String(GAMES.length + LEARN.length), t('statGames')],
-    ['4', t('statLangs')],
+    [words ? words.toLocaleString('en-IN') : '…', t('statWords'), BookOpen],
+    [String(GAMES.length + LEARN.length), t('statGames'), Gamepad2],
+    ['4', t('statLangs'), Languages],
   ];
 
   return (
     <>
-      <section className="relative overflow-hidden bg-gradient-to-br from-teal-dark via-teal to-emerald-500 text-white">
-        <div className="pointer-events-none absolute -left-24 top-10 h-72 w-72 rounded-full bg-mint/25 blur-3xl" />
-        <div className="pointer-events-none absolute -right-20 -bottom-20 h-80 w-80 rounded-full bg-emerald-300/30 blur-3xl" />
-        <div className="container-page relative grid items-center gap-10 py-14 sm:py-20 lg:grid-cols-[1.2fr_1fr]">
-          <div className="animate-fade-up">
-            <span className="inline-flex rounded-full bg-white/15 px-4 py-1.5 text-xs font-bold ring-1 ring-white/30">{t('heroBadge')}</span>
-            <h1 className="mt-5 text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-6xl">{t('heroTitle')}</h1>
-            <p className="mt-4 max-w-xl text-lg text-mint-light/90">{t('heroSub')}</p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link to="/daily-challenge" className="btn bg-white text-teal-dark shadow-lift hover:-translate-y-0.5 hover:bg-mint-light">
-                <Trophy className="h-4 w-4" aria-hidden="true" /> {t('startPlaying')}
-              </Link>
-              <Link to="/games" className="btn bg-white/10 text-white ring-1 ring-white/40 hover:bg-white/20">
-                {t('exploreGames')} →
-              </Link>
-            </div>
-          </div>
-          <div className="relative hidden lg:block" aria-hidden="true">
-            <div className="card animate-float p-6 text-ink">
-              <p className="chip">
-                <Sparkles className="h-3.5 w-3.5" /> {t('game_dailyWord')}
-              </p>
-              <p className="mt-4 text-4xl font-extrabold text-teal-dark">opportunity</p>
-              <p className="mt-1 text-ink-soft">/ˌɒpəˈtjuːnɪti/</p>
-              <p className="mt-3 text-lg font-bold">તક · अवसर · Gelegenheit · okazja</p>
-              <div className="mt-5 grid grid-cols-2 gap-3">
-                <div className="rounded-2xl bg-mint-light p-3 text-center">
-                  <p className="flex items-center justify-center gap-1.5 text-2xl font-extrabold text-teal">
-                    <Star className="h-5 w-5 fill-amber-400 text-amber-400" /> {points}
-                  </p>
-                  <p className="text-xs text-ink-soft">{t('points')}</p>
-                </div>
-                <div className="rounded-2xl bg-mint-light p-3 text-center">
-                  <p className="flex items-center justify-center gap-1.5 text-2xl font-extrabold text-teal">
-                    <Flame className="h-5 w-5 text-orange-500" /> {streak}
-                  </p>
-                  <p className="text-xs text-ink-soft">{t('streak')}</p>
-                </div>
+      <section className="px-3 pt-4">
+        <div className="relative mx-auto max-w-[1400px] overflow-hidden rounded-[36px] bg-[radial-gradient(120%_120%_at_0%_0%,#14b8a6_0%,#0f766e_40%,#0b3f3b_100%)] text-white shadow-[0_40px_80px_-30px_rgba(11,63,59,0.7)]">
+          <GridFloor />
+          <Orb tone="mint" className="-left-20 -top-20 h-64 w-64 opacity-80" />
+          <Orb tone="gold" className="bottom-24 left-[46%] hidden h-12 w-12 animate-float-slow lg:block" />
+          <Orb tone="teal" className="-bottom-24 right-[-60px] h-72 w-72 opacity-90" />
+
+          <div className="container-page relative grid items-center gap-12 py-16 sm:py-24 lg:grid-cols-[1.15fr_1fr]">
+            <div className="animate-fade-up">
+              <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-bold ring-1 ring-white/30 backdrop-blur">
+                <Sparkles className="h-3.5 w-3.5 text-mint" aria-hidden="true" /> {t('heroBadge')}
+              </span>
+              <h1 className="mt-6 text-4xl font-extrabold leading-[1.05] tracking-tight drop-shadow-[0_6px_18px_rgba(0,0,0,0.3)] sm:text-6xl lg:text-7xl">{t('heroTitle')}</h1>
+              <p className="mt-5 max-w-xl text-lg text-mint-light/90">{t('heroSub')}</p>
+              <div className="mt-9 flex flex-wrap gap-4">
+                <Link to="/daily-challenge" className="btn-light !min-h-[52px] !px-6 !text-base">
+                  <Trophy className="h-5 w-5" aria-hidden="true" /> {t('startPlaying')}
+                </Link>
+                <Link to="/games" className="btn !min-h-[52px] bg-white/10 !px-6 !text-base text-white ring-1 ring-white/40 backdrop-blur hover:bg-white/20">
+                  {t('exploreGames')} <ArrowRight className="h-5 w-5" aria-hidden="true" />
+                </Link>
               </div>
+            </div>
+
+            <div className="relative hidden h-[420px] lg:block" aria-hidden="true">
+              <div className="absolute left-4 top-0 animate-float-slow">
+                <LetterCube size={150} />
+              </div>
+              <Tilt className="absolute bottom-0 right-0 w-[340px]" max={12}>
+                <div className="card relative p-6 text-ink">
+                  <span className="tilt-shine" />
+                  <p className="chip">
+                    <Sparkles className="h-3.5 w-3.5" /> {t('game_dailyWord')}
+                  </p>
+                  <p className="mt-4 text-4xl font-extrabold text-teal-dark">opportunity</p>
+                  <p className="mt-1 text-ink-soft">/ˌɒpəˈtjuːnɪti/</p>
+                  <p className="mt-3 text-lg font-bold">તક · अवसर · Gelegenheit · okazja</p>
+                  <div className="mt-5 grid grid-cols-2 gap-3">
+                    <div className="rounded-2xl bg-white p-3 text-center shadow-[0_4px_0_#d1fae5]">
+                      <p className="flex items-center justify-center gap-1.5 text-2xl font-extrabold text-teal">
+                        <Star className="h-5 w-5 fill-amber-400 text-amber-400" /> {points}
+                      </p>
+                      <p className="text-xs text-ink-soft">{t('points')}</p>
+                    </div>
+                    <div className="rounded-2xl bg-white p-3 text-center shadow-[0_4px_0_#d1fae5]">
+                      <p className="flex items-center justify-center gap-1.5 text-2xl font-extrabold text-teal">
+                        <Flame className="h-5 w-5 text-orange-500" /> {streak}
+                      </p>
+                      <p className="text-xs text-ink-soft">{t('streak')}</p>
+                    </div>
+                  </div>
+                </div>
+              </Tilt>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="container-page -mt-8 relative z-10">
-        <div className="card grid grid-cols-3 divide-x divide-mint-light p-4 sm:p-6">
-          {stats.map(([n, label]) => (
-            <div key={label} className="px-2 text-center">
-              <p className="text-2xl font-extrabold text-teal sm:text-3xl">{n}</p>
-              <p className="text-xs text-ink-soft sm:text-sm">{label}</p>
+      <section className="container-page relative z-10 -mt-10">
+        <div className="grid grid-cols-3 gap-3 sm:gap-5">
+          {stats.map(([n, label, Icon], i) => (
+            <div key={label} className="card flex flex-col items-center gap-2 p-4 text-center sm:flex-row sm:gap-4 sm:p-6 sm:text-left animate-fade-up" style={{ animationDelay: `${i * 60}ms` }}>
+              <span className="icon-3d h-11 w-11 shrink-0 bg-gradient-to-br from-emerald-400 to-teal sm:h-14 sm:w-14" aria-hidden="true">
+                <Icon className="relative h-5 w-5 sm:h-7 sm:w-7" />
+              </span>
+              <div>
+                <p className="text-xl font-extrabold text-teal-dark sm:text-3xl">{n}</p>
+                <p className="text-[11px] leading-tight text-ink-soft sm:text-sm">{label}</p>
+              </div>
             </div>
           ))}
         </div>

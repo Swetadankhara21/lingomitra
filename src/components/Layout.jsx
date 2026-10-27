@@ -5,11 +5,14 @@ import { LANGUAGES, useI18n } from '../i18n/index.jsx';
 import { useProgress } from '../lib/progress.jsx';
 import { GAMES, LEARN } from '../lib/games.js';
 import { OWNER } from '../lib/owner.js';
+import { Orb } from './Scene3D.jsx';
 
 function Logo() {
   return (
     <Link to="/" className="flex items-center gap-2" aria-label="LingoMitra home">
-      <span className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-teal to-emerald-400 text-lg font-extrabold text-white shadow-lift">Lm</span>
+      <span className="icon-3d h-10 w-10 bg-gradient-to-br from-emerald-400 to-teal text-lg font-extrabold">
+        <span className="relative">Lm</span>
+      </span>
       <span className="text-xl font-extrabold tracking-tight text-teal-dark">
         Lingo<span className="text-teal">Mitra</span>
       </span>
@@ -54,11 +57,13 @@ function Navbar() {
     { to: '/progress', label: t('nav_progress') },
   ];
   const linkCls = ({ isActive }) =>
-    `rounded-xl px-3 py-2 text-sm font-bold transition ${isActive ? 'bg-mint-light text-teal-dark ring-1 ring-mint' : 'text-ink hover:bg-mint-light hover:text-teal-dark'}`;
+    `rounded-xl px-3.5 py-2 text-sm font-bold transition ${
+      isActive ? 'bg-teal text-white shadow-[0_3px_0_#0b4f4a]' : 'text-ink hover:bg-mint-light hover:text-teal-dark'
+    }`;
 
   return (
-    <header className="sticky top-0 z-40 border-b border-mint/60 bg-white/90 backdrop-blur">
-      <nav className="container-page flex h-16 items-center justify-between gap-3" aria-label="Main">
+    <header className="sticky top-0 z-40 px-3 pt-3">
+      <nav className="glass mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 rounded-2xl px-3 sm:px-5" aria-label="Main">
         <Logo />
         <div className="hidden items-center gap-1 lg:flex">
           {links.map((l) => (
@@ -85,8 +90,8 @@ function Navbar() {
         </div>
       </nav>
       {open && (
-        <div id="mobile-menu" className="border-t border-mint/60 bg-white lg:hidden animate-fade-up">
-          <div className="container-page grid gap-1 py-3">
+        <div id="mobile-menu" className="glass mx-auto mt-2 max-w-6xl rounded-2xl lg:hidden animate-fade-up">
+          <div className="grid gap-1 p-3">
             {links.map((l) => (
               <NavLink key={l.to} to={l.to} end={l.end} className={linkCls}>
                 {l.label}
@@ -104,8 +109,9 @@ function Footer() {
   const { t } = useI18n();
   const year = new Date().getFullYear();
   return (
-    <footer className="mt-16 bg-teal-dark text-mint-light">
-      <div className="container-page grid gap-8 py-12 sm:grid-cols-2 lg:grid-cols-4">
+    <footer className="relative mt-20 overflow-hidden bg-[radial-gradient(120%_140%_at_100%_0%,#0f766e_0%,#0b3f3b_60%)] text-mint-light">
+      <Orb tone="teal" className="-left-16 -top-16 h-48 w-48 opacity-60" />
+      <div className="container-page relative grid gap-8 py-14 sm:grid-cols-2 lg:grid-cols-4">
         <div>
           <p className="text-xl font-extrabold text-white">LingoMitra</p>
           <p className="mt-2 text-sm text-mint-light/80">{t('footerTag')}</p>
@@ -153,7 +159,7 @@ function Footer() {
           </ul>
         </div>
       </div>
-      <div className="border-t border-white/10">
+      <div className="relative border-t border-white/10">
         <p className="container-page py-5 text-center text-xs text-mint-light/70">
           © {year} LingoMitra · {OWNER.name}. {t('rights')}
         </p>

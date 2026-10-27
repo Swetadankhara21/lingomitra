@@ -1,5 +1,6 @@
-import { CheckCircle2, Dumbbell, PartyPopper, Volume2, XCircle } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Dumbbell, PartyPopper, Volume2, XCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { GridFloor, Orb, Tilt } from './Scene3D.jsx';
 import { gameByKey } from '../lib/games.js';
 import { useI18n } from '../i18n/index.jsx';
 import { useProgress } from '../lib/progress.jsx';
@@ -9,8 +10,11 @@ export function ProgressBar({ value, max, label }) {
   const pct = max > 0 ? Math.min(100, Math.round((value / max) * 100)) : 0;
   return (
     <div className="w-full" role="progressbar" aria-valuemin={0} aria-valuemax={max} aria-valuenow={value} aria-label={label}>
-      <div className="h-3 w-full overflow-hidden rounded-full bg-mint-light ring-1 ring-mint">
-        <div className="h-full rounded-full bg-gradient-to-r from-teal to-emerald-400 transition-all duration-500" style={{ width: `${pct}%` }} />
+      <div className="h-4 w-full overflow-hidden rounded-full bg-mint-light p-0.5 shadow-[inset_0_2px_4px_rgba(17,94,89,0.15)]">
+        <div
+          className="relative h-full rounded-full bg-gradient-to-r from-teal to-emerald-400 transition-all duration-500 after:absolute after:inset-x-1 after:top-0.5 after:h-1 after:rounded-full after:bg-white/40"
+          style={{ width: `${pct}%` }}
+        />
       </div>
     </div>
   );
@@ -20,21 +24,25 @@ export function ProgressBar({ value, max, label }) {
 export function PageHeader({ icon, gameKey, title, desc, children }) {
   const Icon = icon || (gameKey && gameByKey(gameKey)?.icon);
   return (
-    <header className="relative overflow-hidden bg-gradient-to-br from-teal-dark via-teal to-emerald-500 text-white">
-      <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-mint/20 blur-2xl" />
-      <div className="container-page relative py-10 sm:py-14">
-        <div className="animate-fade-up">
-          {Icon && (
-            <span className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-white/15 ring-1 ring-white/30" aria-hidden="true">
-              <Icon className="h-7 w-7" strokeWidth={2.2} />
-            </span>
-          )}
-          <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl">{title}</h1>
-          {desc && <p className="mt-2 max-w-2xl text-mint-light/90">{desc}</p>}
-          {children && <div className="mt-5">{children}</div>}
+    <div className="px-3 pt-4">
+      <header className="relative mx-auto max-w-[1400px] overflow-hidden rounded-[32px] bg-[radial-gradient(120%_120%_at_0%_0%,#14b8a6_0%,#0f766e_45%,#0b3f3b_100%)] text-white shadow-[0_30px_60px_-30px_rgba(11,63,59,0.7)]">
+        <GridFloor />
+        <Orb tone="mint" className="-right-10 top-6 h-40 w-40 animate-float-slow opacity-90 sm:right-16 sm:h-48 sm:w-48" />
+        <Orb tone="gold" className="right-48 top-24 hidden h-14 w-14 animate-float-slow [animation-delay:-3s] lg:block" />
+        <div className="container-page relative py-12 sm:py-16">
+          <div className="animate-fade-up">
+            {Icon && (
+              <span className="icon-3d mb-5 h-16 w-16 bg-gradient-to-br from-emerald-400 to-teal" aria-hidden="true">
+                <Icon className="relative h-8 w-8" strokeWidth={2.2} />
+              </span>
+            )}
+            <h1 className="text-3xl font-extrabold tracking-tight drop-shadow-[0_4px_12px_rgba(0,0,0,0.25)] sm:text-5xl">{title}</h1>
+            {desc && <p className="mt-2 max-w-2xl text-mint-light/90">{desc}</p>}
+            {children && <div className="mt-5">{children}</div>}
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
+    </div>
   );
 }
 
@@ -51,7 +59,7 @@ export function LevelPicker() {
           aria-checked={level === l}
           onClick={() => setLevel(l)}
           className={`rounded-full px-4 py-2 text-sm font-bold transition ${
-            level === l ? 'bg-white text-teal-dark shadow-lift' : 'bg-white/15 text-white ring-1 ring-white/40 hover:bg-white/25'
+            level === l ? 'bg-white text-teal-dark shadow-[0_4px_0_rgba(255,255,255,0.4)]' : 'bg-white/10 text-white ring-1 ring-white/40 backdrop-blur hover:bg-white/20'
           }`}
         >
           {t(l)}
@@ -75,20 +83,19 @@ export function SpeakButton({ text, className = '', label }) {
 export function GameCard({ game, index = 0 }) {
   const { t } = useI18n();
   return (
-    <Link
-      to={game.path}
-      className="group card flex flex-col p-5 transition duration-300 hover:-translate-y-1 hover:shadow-lift animate-fade-up"
-      style={{ animationDelay: `${index * 40}ms` }}
-    >
-      <span className={`mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${game.accent} text-white shadow-card transition group-hover:scale-110`} aria-hidden="true">
-        <game.icon className="h-7 w-7" strokeWidth={2.2} />
-      </span>
-      <h3 className="text-lg font-extrabold text-ink">{t(`game_${game.key}`)}</h3>
-      <p className="mt-1 flex-1 text-sm text-ink-soft">{t(`desc_${game.key}`)}</p>
-      <span className="mt-4 inline-flex items-center gap-1 text-sm font-bold text-teal group-hover:gap-2 transition-all">
-        {t('play')} <span aria-hidden="true">→</span>
-      </span>
-    </Link>
+    <Tilt className="h-full animate-fade-up" style={{ animationDelay: `${index * 40}ms` }}>
+      <Link to={game.path} className="group card relative flex h-full flex-col overflow-hidden p-6">
+        <span className="tilt-shine" aria-hidden="true" />
+        <span className={`icon-3d pop-out mb-5 h-16 w-16 bg-gradient-to-br ${game.accent} transition-transform duration-300 group-hover:-translate-y-1 group-hover:rotate-[-6deg]`} aria-hidden="true">
+          <game.icon className="relative h-8 w-8" strokeWidth={2.2} />
+        </span>
+        <h3 className="text-lg font-extrabold text-ink">{t(`game_${game.key}`)}</h3>
+        <p className="mt-1 flex-1 text-sm text-ink-soft">{t(`desc_${game.key}`)}</p>
+        <span className="mt-5 inline-flex w-fit items-center gap-1.5 rounded-full bg-mint-light px-3.5 py-1.5 text-sm font-extrabold text-teal-dark ring-1 ring-mint transition-all group-hover:gap-2.5 group-hover:bg-teal group-hover:text-white group-hover:ring-teal">
+          {t('play')} <ArrowRight className="h-4 w-4" aria-hidden="true" />
+        </span>
+      </Link>
+    </Tilt>
   );
 }
 
@@ -98,8 +105,8 @@ export function ResultCard({ correct, total, onRestart, children }) {
   const good = pct >= 70;
   return (
     <div className="card mx-auto max-w-xl p-8 text-center animate-pop">
-      <div className={`mx-auto inline-flex h-20 w-20 items-center justify-center rounded-full ${good ? 'bg-mint-light text-teal' : 'bg-amber-50 text-amber-500'}`} aria-hidden="true">
-        {good ? <PartyPopper className="h-10 w-10" /> : <Dumbbell className="h-10 w-10" />}
+      <div className={`icon-3d mx-auto h-24 w-24 rounded-3xl bg-gradient-to-br ${good ? 'from-emerald-400 to-teal' : 'from-amber-300 to-amber-500'}`} aria-hidden="true">
+        {good ? <PartyPopper className="relative h-11 w-11" /> : <Dumbbell className="relative h-11 w-11" />}
       </div>
       <h2 className="mt-3 text-2xl font-extrabold text-ink">{good ? t('wellDone') : t('keepPracticing')}</h2>
       <p className="mt-2 text-ink-soft">{t('resultLine', { correct, total })}</p>

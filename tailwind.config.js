@@ -23,8 +23,12 @@ export default {
         pop: { '0%': { transform: 'scale(0.96)' }, '60%': { transform: 'scale(1.03)' }, '100%': { transform: 'scale(1)' } },
         shake: { '0%, 100%': { transform: 'translateX(0)' }, '25%': { transform: 'translateX(-6px)' }, '75%': { transform: 'translateX(6px)' } },
         float: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-8px)' } },
+        'float-slow': { '0%, 100%': { transform: 'translate3d(0,0,0)' }, '50%': { transform: 'translate3d(0,-18px,0)' } },
+        spin3d: { '0%': { transform: 'rotateX(-18deg) rotateY(0deg)' }, '100%': { transform: 'rotateX(-18deg) rotateY(360deg)' } },
       },
       animation: {
+        'float-slow': 'float-slow 7s ease-in-out infinite',
+        spin3d: 'spin3d 14s linear infinite',
         'fade-up': 'fade-up 0.45s ease-out both',
         pop: 'pop 0.35s ease-out',
         shake: 'shake 0.3s ease-in-out',

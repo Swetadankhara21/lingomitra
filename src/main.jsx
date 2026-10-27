@@ -5,7 +5,10 @@ import App from './App.jsx';
 import ErrorBoundary from './components/ErrorBoundary.jsx';
 import { I18nProvider } from './i18n/index.jsx';
 import { ProgressProvider } from './lib/progress.jsx';
+import { startUpdateWatcher } from './lib/autoUpdate.js';
 import './index.css';
+
+startUpdateWatcher();
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

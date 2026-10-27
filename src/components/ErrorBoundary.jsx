@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { RefreshCw } from 'lucide-react';
+import { reloadOnce } from '../lib/autoUpdate.js';
 
 /**
  * Shows a reload card instead of a blank page if anything crashes - for
@@ -18,6 +19,10 @@ export default class ErrorBoundary extends Component {
 
   componentDidCatch(error) {
     console.error('LingoMitra crashed:', error);
+    // A page file from an older deploy no longer exists - a fresh load fixes it.
+    if (/dynamically imported module|Importing a module script failed|Loading chunk/i.test(String(error?.message))) {
+      reloadOnce();
+    }
   }
 
   render() {

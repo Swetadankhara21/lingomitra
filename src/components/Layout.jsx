@@ -5,6 +5,7 @@ import { LANGUAGES, useI18n } from '../i18n/index.jsx';
 import { useProgress } from '../lib/progress.jsx';
 import { GAMES, LEARN } from '../lib/games.js';
 import { OWNER } from '../lib/owner.js';
+import { applyUpdateOn } from '../lib/autoUpdate.js';
 import { Orb } from './Scene3D.jsx';
 
 function Logo() {
@@ -170,7 +171,10 @@ function Footer() {
 
 export default function Layout() {
   const { pathname } = useLocation();
-  useEffect(() => window.scrollTo(0, 0), [pathname]);
+  useEffect(() => {
+    applyUpdateOn(pathname);
+    window.scrollTo(0, 0);
+  }, [pathname]);
   return (
     <div className="flex min-h-screen flex-col">
       <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 btn-primary">
